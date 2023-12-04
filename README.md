@@ -1,3 +1,5 @@
+Mostly ROS2 functions are in voice_rec folder
+
 SocketROSNode
 The SocketROSNode is a ROS 2 node that establishes a socket server to receive data from a client and publishes the received data as ROS 2 messages.
 
