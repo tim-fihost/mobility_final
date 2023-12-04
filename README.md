@@ -1,4 +1,51 @@
 Mostly ROS2 functions are in voice_rec folder
+The ServerNode is a ROS 2 node designed to function as a simple server, sending messages to a client over a TCP/IP socket connection.
+
+Prerequisites
+ROS 2 installed and configured
+Python 3 installed
+rclpy library installed
+Installation
+Clone the repository:
+
+bash
+Copy code
+git clone <repository_url>
+Navigate to the project directory:
+
+bash
+Copy code
+cd <project_directory>
+Usage
+Launching the ServerNode
+To launch the ServerNode, ensure that your ROS 2 environment is sourced:
+
+bash
+Copy code
+source /path/to/ros2/install/setup.bash
+Run the server node:
+
+bash
+Copy code
+python server_node.py
+Configuration
+You can configure the server by modifying the following parameters in the ServerNode class:
+
+server_ip: Set the server's IP address.
+server_port: Set the server's port number.
+python
+Copy code
+# Example: Customize server IP and port
+self.server_ip = '192.168.1.100'
+self.server_port = 9880
+Sending Messages
+The server sends a default message, "Hello, client!" to the connected client. You can customize the message by modifying the send_message method in the code.
+
+Cleaning Up
+The server gracefully shuts down when interrupted (e.g., using Ctrl + C). It closes the socket connections to ensure proper cleanup.
+
+
+
 
 SocketROSNode
 The SocketROSNode is a ROS 2 node that establishes a socket server to receive data from a client and publishes the received data as ROS 2 messages.
