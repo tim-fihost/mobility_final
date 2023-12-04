@@ -1,0 +1,29 @@
+import unittest
+from unittest.mock import patch
+from io import StringIO
+import sys
+from your_script_file import call_converter
+
+class TestCallConverter(unittest.TestCase):
+
+    @patch('builtins.input', side_effect=['user input'])  # Replace 'builtins.input' with the source of your input
+    def test_call_converter(self, mock_input):
+        # Redirect stdout to capture print statements
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        # Call the function
+        result = call_converter()
+
+        # Reset redirect.
+        sys.stdout = sys.__stdout__
+
+        # Check if the function returns the expected result
+        self.assertEqual(result, 'user input')
+
+        # Check if the function prints the expected output
+        expected_output = 'user input\n'
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
